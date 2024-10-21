@@ -1,0 +1,66 @@
+sprint<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .card{
+         display: none;
+         align-items: center;
+         padding: 10px;
+         border-radius: 10px;
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         z-index: 100; 
+      }
+
+     #block{
+         display: block;
+     }
+
+     .acertou{
+      background-color: rgb(71, 209, 71);
+     }
+
+     .errou{
+      background-color: rgb(222, 85, 85);
+     }
+   </style>
+</head>
+<body>
+   <p><span class="num num1">3</span> + <span class="num num2">4</span></p>
+   <p>Resultado</p>
+   <input id="result">
+   <button onclick="verificar()">Verificar</button>
+
+
+   <div class="acertou card">
+      <p>Parabéns! Você acertou!</p>
+   </div>
+
+   <div class="errou card">
+      <p>Que pena, você errou.</p>
+   </div>
+   
+   <script>
+      let resposta = document.querySelector("#result");
+      let acertou = document.querySelector(".acertou");
+      let errou = document.querySelector(".errou");
+
+      function verificar(){
+         let result = Number(resposta.value);
+         console.log(result)
+         if(result == 7){
+            acertou.setAttribute("id","block");
+            errou.removeAttribute("id","block")
+         }else{
+            errou.setAttribute("id","block");
+            acertou.removeAttribute("id","block")
+         }
+      }
+   </script>
+</body>
+</html>

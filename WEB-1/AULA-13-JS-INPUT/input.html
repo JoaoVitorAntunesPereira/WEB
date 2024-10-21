@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1>Informe um valor em dólar</h1>
+   <input id="valorDolar" autocomplete="off" onmouseleave="converterDolar">
+
+   <button id="converter" onclick="converterDolar()">Converter</button>
+
+   <p>Valor: </p>
+
+   <script>
+      let paragrafo = document.querySelector("p");
+      const texto = paragrafo.textContent;
+      let inputValor = document.querySelector("#valorDolar");
+
+      function converterDolar(){
+         let valor = Number(inputValor.value);
+         let valorReal = (valor * 5.41).toFixed(2);
+         console.log(valorReal);
+         paragrafo.textContent = texto + "R$" + valorReal;
+      }
+   </script>
+</body>
+</html>

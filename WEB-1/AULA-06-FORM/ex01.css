@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div.cardForm{
+    width: 500px;
+    padding: 20px;
+    background-color: #c4fdb8;
+    border: 1px solid green;
+}
+
+div.cardForm form{
+    display: grid;
+    grid-template-columns: 35% 1fr;
+}
+
+label, select, input, p{
+    margin: 5px;
+}
+
+label, p{
+    text-align: right;
+    color: rgb(2, 2, 153);
+}
+
+div.sitEsc label{
+    color: black;
+}
+
+button{
+    width: 30%;
+}

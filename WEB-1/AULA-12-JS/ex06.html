@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 06</title>
+</head>
+<body>
+    <script>
+        let valorCarro, anoFabricacao, valorSeguro;
+
+        valorCarro = parseFloat(prompt("Informe o valor do carro: "));
+        anoFabricacao = parseInt(prompt("Informe o ano de fabricação do carro: "));
+
+        if(anoFabricacao > 2022){
+            valorSeguro = valorCarro * 0.05;
+        }else if(anoFabricacao >= 2018 && anoFabricacao <= 2022){
+            valorSeguro = valorCarro * 0.10;
+        }else{
+            valorSeguro = valorCarro * 0.15;
+        }
+
+        alert("Valor do seguro: " + valorSeguro);
+    </script>
+</body>
+</html>

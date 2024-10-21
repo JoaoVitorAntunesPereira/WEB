@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+
+
+
+   <script>
+      let nomes = ["joao", "vitor", "antunes"];
+      nomes.push("pereira");
+      nomes.sort();
+      nomes.pop();
+      nomes.slice(0,2);
+
+      for(let i = 0; i < nomes.length; i++){
+         console.log("Em for(){}: " + nomes[i]);
+      }
+
+      console.log("=====================");
+      
+      nomes.forEach(n => {
+         console.log("Em forEach(): " + n)
+      });
+
+      console.log(nomes.slice(1,2))
+      console.log(typeof(nomes));
+   </script>
+</body>
+</html>

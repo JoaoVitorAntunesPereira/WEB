@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+      }
+      td, th{
+         border: 1px solid black;
+         padding: 10px;
+      }
+
+      table{
+         border-collapse: collapse;
+      }
+
+      .tittle, .footer{
+         grid-column: span 2;
+         text-align: center;
+      }
+
+      .tittle{
+         background-color: rgb(243, 213, 124);
+      }
+
+      .footer{
+         background-color: #e6e6e6;
+         font-size: 10px;
+      }
+
+      .header{
+         background-color: #97cbfa;
+         text-align: center;
+      }
+   </style>
+   <title>Ex02</title>
+</head>
+<body>
+   <table>
+      <tr>
+         <th colspan="2" class="tittle">Vendas do 1º Semestre</th>
+      </tr>
+      <tr>
+         <th class="header">Modelo</th>
+         <th class="header">Unidades</th>
+      </tr>
+      <tr>
+         <td>Palio</td>
+         <td>585.240</td>
+      </tr>
+      <tr>
+         <td>Gol</td>
+         <td>529.894</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="footer">fonte agnecias Reuters</td>
+      </tr>
+   </table>
+</body>
+</html>

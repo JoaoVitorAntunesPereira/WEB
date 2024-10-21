@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <script>
+      let produtos = [10, 20, 5, 45];
+      console.log(`tamaho do array: ${produtos.length}`);
+      console.log(`${produtos}`);
+      // soma manual dos produtos:
+      //let soma = produtos[0] + produtos[1] + produtos[2] + produtos[3];
+      let soma = 0;
+      for(let i = 0; i < produtos.length; i++){
+         soma += produtos[i];
+      }
+      console.log(`soma: ${soma}`);
+   </script>
+</body>
+</html>

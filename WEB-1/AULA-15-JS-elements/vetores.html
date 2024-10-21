@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      img {
+         max-width: 100%; /* Para garantir que a imagem se ajuste ao tamanho da tela */
+      }
+   </style>
+</head>
+<body>
+   <div id="buttons">
+      <button onclick="beforeDog()">before</button>
+      <button onclick="nextDog()">next</button>
+   </div>
+<<<<<<< Updated upstream:WEB-1/AULA-15-JS-elements/vetores.html
+   <img id="photo" src="">
+=======
+   <img id="photo" alt="Dog photo">
+   <p id="raca-cachorro"></p>
+>>>>>>> Stashed changes:AULA-15-JS-elements/vetores.html
+
+   <script>
+      const dogs = [
+         "https://images.dog.ceo/breeds/maltese/n02085936_7272.jpg",
+         "https://images.dog.ceo/breeds/terrier-border/n02093754_2847.jpg",
+         "https://images.dog.ceo/breeds/airedale/n02096051_5241.jpg",
+         "https://images.dog.ceo/breeds/terrier-tibetan/n02097474_2012.jpg"
+      ];
+
+      function pegarRacaCachorro(link) {
+         return link.split('/')[4];
+      }
+
+      let pg = 0;
+      let photo = document.querySelector("#photo");
+      let raca = document.querySelector("#raca-cachorro");
+      
+      photo.src = dogs[0];
+      raca.textContent = pegarRacaCachorro(dogs[pg]);
+
+      function nextDog(){
+         pg++;
+         if(pg == dogs.length){
+            pg = 0;
+         }
+         photo.src = dogs[pg];
+         raca.textContent = pegarRacaCachorro(dogs[pg]);
+      }
+
+      function beforeDog(){
+         pg--;
+         if(pg < 0){
+            pg = dogs.length - 1;
+         }
+         photo.src = dogs[pg];
+         raca.textContent = pegarRacaCachorro(dogs[pg]);
+      }
+   </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+    <style>
+        div.container{
+            background-color: rgb(129, 236, 129);
+            border: 1px solid green;
+            width: max-content;
+        }
+        form{
+            display: grid;
+            grid-template-columns: max-content max-content;
+            gap: 10px;
+            margin: 20px;
+        }
+        label{
+            color: rgb(0, 0, 128);
+            justify-self: right;
+        }
+        button{
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <label for="data-nasc">Data de nascimento:</label>
+            <input type="date" name="data-nasc" id="data-nasc-id">
+            <label for="Escolaridade">Escolaridade</label>
+            <select name="escolaridade" id="escolaridade-id">
+                <option value="ensino-fundamental">Ensino Fundamental</option>
+                <option value="ensino-medio">Ensino Médio</option>
+                <option value="ensino-superior">Ensino Superior</option>
+            </select>
+            <label for="situacao-escolaridade">Situação da Escolaridade:</label>
+            <div class="input-radio">
+                <input type="radio" name="situacao-escolaridade" id="situacao-escolaridade-id-completo" value="completo">Completo
+                <input type="radio" name="situacao-escolaridade" id="situacao-escolaridade-id-completo" value="incompleto">Incompleto
+            </div>
+            <label for="nacionalidade">Nacionalidade:</label>
+            <select name="nacionalidade" id="nacionalidade-id">
+                <option value="BR">Brasil</option>
+                <option value="PR">Paraguai</option>
+                <option value="AR">Argentina</option>
+                <option value="EUA">Estado Unidos da América</option>
+            </select>
+            <label for="uf">UF onde nasceu:</label>
+            <select name="uf" id="uf-id">
+                <option value="parana">Paraná</option>
+                <option value="rio-grande-do-sul">Rio Grande do Sul</option>
+                <option value="santa-catarina">Santa Catarina</option>
+                <option value="rio-de-janeiro">Rio de Janeiro</option>
+            </select>
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+</body>
+</html>

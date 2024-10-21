@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body {
+         display: flex;
+      }
+
+      .convertido {
+         background-color: rgb(112, 236, 112);
+         width: 100px;
+         text-align: center;
+         align-content: center;
+      }
+
+      button {
+         margin: 5px;
+      }
+      p{
+        margin: 1px;
+        align-self: center;
+      }
+   </style>
+</head>
+
+<body>
+   <p>Temperatura °C:</p>
+   <input class="celsius">
+   <button onclick="converter()">=</button>
+   <div class="convertido"></div>
+
+   <script>
+      let celsius = document.querySelector(".celsius");
+      let convertido = document.querySelector(".convertido");
+         celsius.addEventListener("input",function converter(){
+         let temp = (celsius.value * 9/5) + 32;
+            convertido.textContent = temp+"ºF";
+      })
+   </script>
+</body>
+
+</html>

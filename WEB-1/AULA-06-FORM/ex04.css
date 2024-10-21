@@ -1,0 +1,68 @@
+*{
+/*     margin: 0;
+    padding: 0;
+ */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.formContainer{
+    background-image: url(ghg.jpeg);
+    background-position: center;
+    width: 600px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+form{
+    display: grid;
+    grid-template-columns: 100px 450px;
+    border: 1px solid rgb(12, 189, 180);
+    background-color: rgba(0, 255, 242, 0.096);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.collumn2{
+    grid-column: span 2;
+}
+
+label{
+    color: aquamarine;
+    text-align: right;
+    margin: 5px;
+}
+
+p{
+    color: aliceblue;
+    text-align: center;
+}
+
+div#form2{
+    display: grid;
+    grid-template-columns: 80px 40px 60px 70px 200px;
+    width: 500px;
+}
+
+input, select{
+    margin: 5px;
+}
+
+button{
+    grid-column: 2;
+    width: 70px;
+    margin: 5px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove setas no Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}

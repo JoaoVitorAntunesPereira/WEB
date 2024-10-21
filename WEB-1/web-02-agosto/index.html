@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <title>Criar projeto</title>
+</head>
+<body>
+   <div class="container">
+      <div class="header">
+         <h1>Novo projeto</h1>
+         <p class="bar">Forneça as informações a seguir para criar um repositório do projeto</p>
+         <p><i>Campos obrigatórios(*)</i></p>
+      </div>
+      <form action="get">
+         <div class="campos bar">
+            <div class="area4">
+               <div class="area1" name="area1">
+                  <label for="owner">Owner *</label>
+                  <select name="owner" id="ownerId">
+                     <option value="n1"><img src="https://avatars.githubusercontent.com/u/7157253?v=4" alt=""><span class="img1 imgbg">a</span>fscheidt</option>
+                     <option value="n2"><img src="">joao</option>
+                  </select>
+               </div>
+               <div class="area2" name="area2">
+                  <label for="repositoryName">Repository name *</label>
+                  <input type="text">
+               </div>
+            </div>
+            <div class="area3" name="area3">
+               <label for="description">Descrição<span class="little">(opcional)</span></label>
+               <input type="text">
+            </div>
+         </div>
+         <div class="esc1 bar">
+            <div class="inputsRadios">
+               <input type="radio" name="privacity" id="privacity1">
+               <i class='bx bx-book'></i>
+               <div class="inputsRadiosText">
+                  Public<span class="little">Anyone on the internet can see this repository. You choose who can commit.</span>
+               </div>
+            </div>
+            <div class="inputsRadios">
+               <input type="radio" name="privacity" id="privacity2">
+               <i class='bx bx-lock-alt' ></i>
+               <div class="inputsRadiosText">
+                  Private<span class="little">You choose who can see and commit this repository.</span>
+               </div>
+            </div>
+         </div>
+         <div class="esc2">
+            <label for="initialize">
+               <strong>Initialize this repository with:</strong>
+            </label>
+            <div class="">
+               <input type="checkbox" name="initialize" id="initializeId">
+               <div>
+                  <strong>Add a README file</strong>
+                  <span class="little">This is where you can write a long description for your project. <a href="#">Lear more about READMEs.</a></span>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</body>
+</html>

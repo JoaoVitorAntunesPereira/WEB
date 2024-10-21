@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+    *{
+        margin: 0px 5px;
+    }
+      body {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .itemsRow{
+        display: flex;
+        margin: 10px;
+      }
+      
+      .resp {
+         background-color: rgb(112, 236, 112);
+         width: 100px;
+         text-align: center;
+         align-content: center;
+      }
+
+      button {
+         margin: 5px;
+      }
+      p{
+        margin: 1px;
+        align-self: center;
+      }
+
+      #calcular{
+        width: 100px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="itemsRow">
+      <p>Item</p>
+      <input class="item">
+      <p>Valor:</p>
+      <input class="valor">
+      <p>Quantidade:</p>
+      <input class="quant">
+      <button onclick="orcamento()">=</button>
+      <div class="resp">R$</div>
+   </div>
+   <div class="itemsRow">
+      <p>Item</p>
+      <input class="item">
+      <p>Valor:</p>
+      <input class="valor">
+      <p>Quantidade:</p>
+      <input class="quant">
+      <button onclick="orcamento()">=</button>
+      <div class="resp">R$</div>
+   </div>
+   <div class="itemsRow">
+        <p>Item</p>
+        <input class="item">
+        <p>Valor:</p>
+        <input class="valor">
+        <p>Quantidade:</p>
+        <input class="quant">
+        <button onclick="orcamento()">=</button>
+        <div class="resp">R$</div>
+    </div>
+   
+    <button onclick="orcamento()" id="calcular">calcular</button>
+    <div class="total">Valor total: R$</div>
+
+   <script>
+      const VALORINPUT = document.getElementsByClassName("valor");
+      const QUANTIDADEINPUT = document.getElementsByClassName("quant")
+      const RESULT = document.getElementsByClassName("resp");
+      const TEXT = RESULT[0].textContent;
+      const TOTAL = document.querySelector(".total");
+      const TEXTTOTAL = TOTAL.textContent;
+      console.log(VALORINPUT);
+
+      function orcamento() {
+        let valor, quant, orcamento, soma = 0;
+
+         for (let index = 0; index < VALORINPUT.length; index++) {
+            valor = Number(VALORINPUT[index].value);
+            quant = Number(QUANTIDADEINPUT[index].value);
+            orcamento = valor * quant;   
+            console.log(valor, quant, orcamento);
+            RESULT[index].textContent = TEXT +" " + orcamento;
+            soma = soma + orcamento;
+            console.log("soma:"+soma)
+         }
+         TOTAL.textContent = TEXTTOTAL + soma;
+      }
+   </script>
+</body>
+
+</html>

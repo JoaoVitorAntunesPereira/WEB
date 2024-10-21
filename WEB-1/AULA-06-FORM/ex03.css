@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+}
+
+div.formContainer{
+    width: 500px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 40% 1fr;
+}
+
+div.turno{
+    grid-column: 2;
+}
+
+button{
+    grid-column: 2;
+    width: 50px;
+    margin: 10px 0;
+}
+
+input, div.turno, div.checkbox{
+    margin: 5px 10px;
+}
+
+label{
+    text-align: right;
+    margin: 10px 5px;
+}
+
+input:focus:invalid, :required:invalid{
+    color: red;
+}

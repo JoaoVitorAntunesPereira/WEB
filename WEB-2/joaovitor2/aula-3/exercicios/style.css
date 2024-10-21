@@ -1,0 +1,23 @@
+:root{
+    --cor-1: #9999ff;
+    --cor-2: #ccccff;
+    --cor-3: #e6e6ff;
+}
+
+tr:nth-child(even){
+    background-color: var(--cor-2);
+}
+
+tr:nth-child(odd){
+    background-color: var(--cor-3);
+}
+
+tr.cabecalho{
+    background-color: var(--cor-1);
+    font-weight: bold;
+}
+
+td, tr{
+    font-size: 21px;
+    padding: 10px;
+}

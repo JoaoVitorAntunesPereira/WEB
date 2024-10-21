@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <style>
+        form{
+            display: grid;
+            grid-template-columns: max-content 270px;
+            gap: 10px;
+            margin: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        label{
+            justify-self: right;
+        }
+        button{
+            grid-column: 2;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome-id" placeholder="Nome">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email-id" placeholder="user@example.org">
+            <label for="Password">Password</label>
+            <input type="password" name="senha" id="senha-id" placeholder="6 caracteres">
+            <label for="conhecimento">Possui conhecimento?</label>
+            <div>
+                <input type="checkbox" name="javascript" id="javascript-id">JavaScript
+                <input type="checkbox" name="html" id="html-id">HTML
+                <input type="checkbox" name="css" id="css-id">CSS
+            </div>
+            <label for="curso">Curso</label>
+            <select name="curso" id="curso-id">
+                <option value="null">--Selecione--</option>
+                <option value="tads">Tecnologia em Análise e Desenvolvimento de Sistemas</option>
+                <option value="eng-aquicultura">Engenharia de Aquicultura</option>
+                <option value="licen-fisica">Licenciatura em Física</option>
+                <option value="tec-gatronomia">Tecnologia em Gastronomia</option>
+            </select>
+            <label for="turno">Turno</label>
+            <div class="input-radio-turno">
+                <input type="radio" name="tarde" id="tarde-id">Tarde
+                <input type="radio" name="noit" id="noite-id">Noite
+            </div>
+            <label for="motivo-matricula">Motivo Matrícula</label>
+            <textarea name="motivo-matricula" id="motivo-matricula-id" cols="20" rows="8"></textarea>
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body {
+         display: flex;
+      }
+
+      .resp {
+         background-color: rgb(112, 236, 112);
+         width: 100px;
+         text-align: center;
+         align-content: center;
+      }
+
+      button {
+         margin: 5px;
+      }
+      p{
+        margin: 1px;
+        align-self: center;
+      }
+   </style>
+</head>
+
+<body>
+   <p>Valor:</p>
+   <input class="valor">
+   <p>Quantidade:</p>
+   <input class="quant">
+   <button onclick="orcamento()">=</button>
+   <div class="resp">R$</div>
+
+   <script>
+      const VALORINPUT = document.querySelector(".valor");
+      const QUANTIDADEINPUT = document.querySelector(".quant")
+      const RESULT = document.querySelector(".resp");
+      const text = RESULT.textContent;
+      function orcamento() {
+         let valor = Number(VALORINPUT.value);
+         let quant = Number(QUANTIDADEINPUT.value);
+         console.log(valor, quant);
+         let orcamento = valor * quant;
+         RESULT.textContent = text+" " + orcamento;
+      }
+   </script>
+</body>
+
+</html>

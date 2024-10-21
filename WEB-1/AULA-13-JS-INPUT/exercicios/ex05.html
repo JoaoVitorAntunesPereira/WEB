@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body {
+         display: flex;
+         flex-direction: column;
+      }
+      
+      button {
+         margin: 5px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="inputAdicionarItem">
+       <input class="item">
+       <button onclick="adicionarItem()">+</button>
+   </div>
+   <p>Lista de tarefas</p>
+   <ol class="listaTarefas">
+      
+   </ol>
+
+   <script>
+    let lista = document.querySelector(".listaTarefas");
+    let item = document.querySelector(".item");
+
+    function adicionarItem(){
+        let li = document.createElement('li');
+        let itemValue = item.value;
+        console.log(itemValue);
+        li.textContent = itemValue;
+        console.log(li);
+        lista.appendChild(li);
+    }
+   </script>
+</body>
+
+</html>

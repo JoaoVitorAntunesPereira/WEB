@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cachórros fófos</title>
+   <style>
+      #buttons{
+         display: flex;
+         justify-content: space-between;
+         width: 200px;
+      }
+
+      #images{
+         display: flex;
+      }
+      .photo{
+         display: flex;
+      }
+
+      .photo {
+         width: 200px;
+      }
+   </style>
+</head>
+<body>
+   <h1>Cachórros fófos</h1>
+   <div id="buttons">
+      <button onclick="beforeDog()">before</button>
+      <button onclick="nextDog()">next</button>
+   </div>
+
+   <div id="images">
+   </div>
+
+   <script>
+      const dogs = [
+         "https://images.dog.ceo/breeds/pekinese/n02086079_6620.jpg",
+         "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_11573.jpg",
+         "https://images.dog.ceo/breeds/airedale/n02096051_5241.jpg",
+         "https://images.dog.ceo/breeds/poodle-miniature/n02113712_2552.jpg"
+      ];
+
+      let images = document.querySelector("#images");
+
+      for(let i = 0; i < dogs.length; i++){
+         let imagesDogs = document.createElement('img');
+         imagesDogs.classList.add('photo');
+         imagesDogs.src = dogs[i];
+         images.appendChild(imagesDogs);
+      }
+
+      let pg = 0, aux = 0;
+      let photo = document.getElementsByClassName("photo");
+      photo.src = dogs[0];
+
+      let buttonsContainer = document.querySelector("#buttons");
+
+      function nextDog(){
+         aux = 0;
+         console.log("next ini: "+pg);
+         pg++;
+
+         if(pg == (dogs.length)){
+            pg = 0;
+         }
+
+         for(let i = 0; i < dogs.length; i++){
+            let especificPhoto = photo[i];
+            aux = pg+i;
+
+            if(aux >= dogs.length){
+               aux = i-pg;
+            }
+
+            console.log("i:"+i+" aux:"+aux+" pg:"+pg);
+            especificPhoto.src = dogs[aux];
+         }
+         console.log("next fim: "+pg);
+      }
+
+      function beforeDog(){
+         console.log("before ini: "+pg);
+         pg--;
+         if(pg < 0){
+            pg = dogs.length - 1;
+         }
+         photo.src = dogs[pg];
+         console.log("before fim: "+pg);
+      }
+
+   </script>
+</body>
+</html>

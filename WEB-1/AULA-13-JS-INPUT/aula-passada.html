@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .dark{
+         background-color: black;
+         color: white;
+      }
+
+      .white{
+         background-color: white;
+         color: black;
+      }
+   </style>
+</head>
+<body>
+   <script>
+      function alterar(){
+         let body = document.getElementsByTagName("body")[0];
+         console.log(body);
+         body.setAttribute("class","dark");
+         let h1 = documento.querySelector("h1");
+         h1.innerText = "Modo escuro";
+      }
+
+      function alterarclaro(){
+         let body = document.querySelector("body")[0];
+         console.log(body);
+         body.setAttribute("class","white");
+         let h1 = documento.querySelector("h1");
+         h1.innerText = "claro";
+      }
+   </script>
+   <p onclick="alterar()">Modo escuro</p>
+   <p onclick="alterarcalro()">Modo claro</p>
+</body>
+</html>

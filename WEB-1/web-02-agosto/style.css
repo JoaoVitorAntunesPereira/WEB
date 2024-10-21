@@ -1,0 +1,115 @@
+
+
+body{
+   background-color: #f0f0f0;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+   margin: 10px;
+}
+
+div.container{
+   background-color: rgb(255, 255, 255);
+   padding: 10px;
+}
+
+div.header{
+}
+
+form{
+}
+
+div.campos{
+   display: grid;
+   grid-template-columns: max-content max-content;
+}
+
+div.area1, .area2{
+   display: flex;
+   flex-direction: column;
+}
+
+div.area4{
+   display: grid;
+   grid-template-columns: max-content max-content;
+   margin: 0;
+}
+
+div.area3{
+   grid-column: span 3;
+   display: flex;
+   flex-direction: column;
+}
+
+i.bx{
+   font-size: 30px;
+}
+
+div.esc1, .esc2, .esc2 > div > div{
+   display: flex;
+   flex-direction: column;
+}
+
+.esc2 > div{
+   display: flex;
+   flex-direction: row;
+   margin: 0;
+}
+
+.esc2 > div > div{
+   margin: 0;
+   padding-top: 16px;
+}   
+
+.inputsRadios{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.inputsRadiosText{
+   display: flex;
+   flex-direction: column;
+}
+
+.inputsRadio i.bx{
+   grid-row: span 2;
+}
+
+.bar{
+   border-bottom: 1px solid #000000;
+}
+
+.little{
+   font-size: 14px;
+}
+
+.campos input{
+   border-radius: 5px;
+   box-shadow: none;
+   height: 30px;
+}
+
+.campos select{
+   height: 30px;
+}
+
+.imgbg, img{
+   background-image: url(https://avatars.githubusercontent.com/u/7157253?v=4);
+   width: 10px;
+}
+
+input[type="radio"] {
+   -webkit-appearance: none; /* Remove default appearance */
+   appearance: none;
+   width: 15px;
+   height: 15px;
+   border: 3px solid #ccc;
+   border-radius: 50%; /* Make it a circle */
+   cursor: pointer;
+ }
+
+ input[type="radio"]:checked{
+   border-color: blue;
+ }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      .gridContainer{
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 5px;
+         border: 1px solid #ccc;
+         padding: 5px;
+         max-width: 100vw;
+      }
+
+      div.divImages{
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         grid-column: span 2;
+         border: 1px solid #ccc;
+         padding: 5px;
+         gap: 5px;
+      }
+
+      div.divImages > div > img{
+         display: inline;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         margin: auto;
+      }
+
+      .header{
+         grid-column: span 2;
+         background-color: #5efb6e;
+         font-weight: bold;
+         border: 0;
+         font-size: 20px;
+         text-align: center;
+      }
+
+   </style>
+   <title>Ex 05</title>
+</head>
+<body>
+   <div class="gridContainer">
+      <div class="header">Casas no centro</div>
+         <div class="divImages">
+            <div class="image">
+               <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRdCVYUapXe2W8uZaji86xpgHdi1FRnTkj_-YXtNk3BYDK5wKDc" alt="">
+            </div>
+            <div class="image">
+               <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7RUK6wHDUJC84gwHjC8wdhIUSA_JDSyX8bXYMv8_zh-kePI7c" alt="">
+            </div>
+         </div>
+      <div class="header">Casas na vila A</div>
+      <div class="divImages">
+         <div class="image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyNws_favOVhDXERICUm4CbvTc0rgNABznVNAAfmhyMF-TyOQy" alt="">
+         </div>
+         <div class="image">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTERvFHEl_JSgdPxiDTGJYQaNZwtFXXtXXfXBj29O7Htdy1hdOl" alt="">
+         </div>
+      </div>
+   </div>
+</body>
+</html>

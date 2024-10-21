@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      div.gridCollum{
+         display: grid;
+         grid-template-columns: max-content max-content;
+      }
+
+      div.gridCollum div{
+         border: 1px solid black;
+         padding: 10px;
+      }
+      
+      .collum1{
+         background-color: #CCFFFF;
+      }
+
+      .collum2{
+         background-color: #98ff98;
+      }
+
+      .header{
+         background-color: #6e6e6e;
+         color: white;
+      }
+   </style>
+   <title>Ex01</title>
+</head>
+<body>
+   <div class="gridCollum">
+      <div class="collum1 header">Modelo</div>
+      <div class="collum2 header">Consumo</div>
+      <div class="collum1">Clio</div>
+      <div class="collum2">15,8km/l</div>
+      <div class="collum1">Palio Fire</div>
+      <div class="collum2">15,4km/l</div>
+      <div class="collum1">Novo Uno</div>
+      <div class="collum2">15,2km/l</div>
+      <div class="collum1">Up</div>
+      <div class="collum2">14,3km/l</div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      div.gridContainer{
+         display: grid;
+         grid-template-columns: repeat(5, max-content);
+         border: 1px solid black;
+         width: max-content;
+         padding: 0;
+      }
+
+      div{
+         gap: 10px;
+         text-align: center;
+         padding: 5px;
+      }
+
+      div.header{
+         background-color: #98ff98;
+         grid-column: span 5;
+         font-weight: bold;
+         padding: 10px;
+      }
+
+      .footer{
+         grid-column: span 5;
+         background-color: blue;
+         color: white;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         font-size: 13px;
+         padding: 0;
+      }
+
+      .x{
+         color: #aaaaaa;
+      }
+   </style>
+   <title>Ex 04</title>
+</head>
+<body>
+   <div class="gridContainer">
+      <div class="header">15ª Rodada</div>
+      <div class="columns time">
+         <div class="lines">Goiás</div>
+         <div class="lines">Palmeiras</div>
+         <div class="lines">Cruzeiro</div>
+         <div class="lines">Botafogo</div>
+      </div>
+      <columns class="columns placar">
+         <div class="lines">0</div>
+         <div class="lines">1</div>
+         <div class="lines">3</div>
+         <div class="lines">2</div>
+      </columns>
+      <div class="columns x">
+         <div class="lines">x</div>
+         <div class="lines">x</div>
+         <div class="lines">x</div>
+         <div class="lines">x</div>
+      </div>
+      <div class="columns placar">
+         <div class="lines">1</div>
+         <div class="lines">0</div>
+         <div class="lines">0</div>
+         <div class="lines">0</div>
+      </div>
+      <div class="columns time">
+         <div class="lines">Inter</div>
+         <div class="lines">São Paulo</div>
+         <div class="lines">Santos</div>
+         <div class="lines">Fluminese</div>
+      </div>
+      <div class="footer">
+         <div class="footer1">Série A</div>
+         <div class="footer2">2014</div>
+      </div>
+   </div>
+</body>
+</html>
