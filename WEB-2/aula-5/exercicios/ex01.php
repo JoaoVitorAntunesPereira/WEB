@@ -9,5 +9,3 @@ $num1 = $_POST['num1'];
 $num2 = $_POST['num2'];
 
 echo "Soma de ".$num1." e ".$num2." por POST: ".($num1+$num2)."<br>";
-
-INSTALAR O THUNDER CLIENT NO VISUAL STUDIO

@@ -19,7 +19,7 @@ $cidades = array("Foz do Iguaçu" => array("Habitantes" => 250000,
                  "Curitiba" => array("Habitantes" => 1500000,
                                         "Área" => 300,
                                         "Altitude" => 850,
-                                        "Estado" => "Paraná-PR"),
+                                        "Estado" => "Paraná-PR")
 );
 
 
