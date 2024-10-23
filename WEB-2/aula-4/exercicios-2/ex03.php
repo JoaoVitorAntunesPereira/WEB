@@ -22,26 +22,26 @@ $cidades = array("Foz do Iguaçu" => array("Habitantes" => 250000,
                                         "Estado" => "Paraná-PR")
 );
 
+echo "<table border = 1>";
+    echo "<tr>";
+         echo "<td>Nome</td>";
+         echo "<td>Habitantes</td>";
+         echo "<td>Área</td>";
+         echo "<td>Altitude</td>";
+         echo "<td>Estado</td>";
+    echo "</tr>";          
+montarTabela($cidades);
+echo "</table>";
 
 function montarTabela($array){
-    echo "<table border = 1>";
-        echo "<tr>";
-            echo "<td>Nome</td>";
-            echo "<td>Habitantes</td>";
-            echo "<td>Área</td>";
-            echo "<td>Altitude</td>";
-            echo "<td>Estado</td>";
-        echo "</tr>";
         foreach ($array as $cidade => $dadosCidade){
                 echo "<tr>";
-                echo "<td>".$cidade."</td>";
-                echo "<td>".$dadosCidade["Habitantes"]."</td>";
-                echo "<td>".$dadosCidade["Área"]."</td>";
-                echo "<td>".$dadosCidade["Altitude"]."</td>";
-                echo "<td>".$dadosCidade["Estado"]."</td>";
+                       echo "<td>".$cidade."</td>";
+                       echo "<td>".$dadosCidade["Habitantes"]."</td>";
+                       echo "<td>".$dadosCidade["Área"]."</td>";
+                       echo "<td>".$dadosCidade["Altitude"]."</td>";
+                       echo "<td>".$dadosCidade["Estado"]."</td>";
             echo "</tr>";
         }
-    echo "</table>";
 }
 
-montarTabela($cidades);
