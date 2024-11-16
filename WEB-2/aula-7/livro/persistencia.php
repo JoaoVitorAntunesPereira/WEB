@@ -21,4 +21,3 @@ function buscarDados(string $nomeArquivo){
 
     return $dados;
 }
-

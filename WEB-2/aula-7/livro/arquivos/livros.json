@@ -1,14 +1,16 @@
 [
     {
-        "id": "737e055c-b4ff-cce0-d3c7-7a8d94778a3f",
-        "titulo": "Homens Bichos e Diabos",
-        "genero": "O",
-        "qtdPag": "154"
+        "id": "23a14d23-3660-4141-d299-e388bb1914fe",
+        "titulo": "",
+        "genero": "",
+        "qtdPag": "",
+        "autor": ""
     },
     {
-        "id": "f244c76a-a4c6-e01d-bc28-31c1df78bfb8",
-        "titulo": "pontos",
+        "id": "cb474409-a456-0073-52ee-db881e4861ca",
+        "titulo": "teste",
         "genero": "D",
-        "qtdPag": "235423455"
+        "qtdPag": "123",
+        "autor": "eu"
     }
 ]
