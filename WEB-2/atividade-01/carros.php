@@ -4,6 +4,13 @@ include_once("persistencia.php");
 
 $carros = buscarDados("carros.json");
 
+$msgErro = "";
+$marca = "";
+$modelo = "";
+$cor = "";
+$tipo = "";
+$combustivel = "";
+
 if(isset($_POST["marca"])){
     $marca = $_POST["marca"];
     $modelo = $_POST["modelo"];
@@ -11,21 +18,42 @@ if(isset($_POST["marca"])){
     $tipo = $_POST["tipo"];
     $combustivel = $_POST["combustivel"];
 
-    $id = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+    $mensagem = array();
 
-    $carro = array("id" => $id,
-                   "marca" => $marca,
-                   "modelo" => $modelo,
-                   "cor" => $cor,
-                   "tipo" => $tipo,
-                   "combustivel" => $combustivel);
+    if(trim($marca) == ""){
+        array_push($mensagem, "Informe a marca");
+    }
+    if(trim($modelo) == ""){
+        array_push($mensagem, "Informe o modelo");
+    }
+    if(trim($cor) == ""){
+        array_push($mensagem, "Informe a cor");
+    }
+    if(trim($tipo) == ""){
+        array_push($mensagem, "Informe o tipo");
+    }
+    if(trim($combustivel) == ""){
+        array_push($mensagem, "Informe o tipo combustivel");
+    }
 
-    array_push($carros, $carro);
+    if(!$mensagem){
+        $id = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+
+        $carro = array("id" => $id,
+                       "marca" => $marca,
+                       "modelo" => $modelo,
+                       "cor" => $cor,
+                       "tipo" => $tipo,
+                       "combustivel" => $combustivel);
     
-    salvarDados($carros, "carros.json");
-    print_r($carro);
+        array_push($carros, $carro);
+        
+        salvarDados($carros, "carros.json");
 
-    header("location: carros.php");
+        header("location: carros.php");
+    }else{
+        $msgErro = implode("<br>", $mensagem);
+    }
 }
 
 ?>
@@ -44,29 +72,32 @@ if(isset($_POST["marca"])){
 
     <h3>Formulário</h3>
     <form action="" method="post">
-        <input type="text" name="marca" id="marca" placeholder="Informe a marca">
+        <input type="text" name="marca" id="marca" placeholder="Informe a marca" value = "<?php echo $marca?>">
         <br><br>
-        <input type="text" name="modelo" id="modelo" placeholder="Informe o modelo">
+        <input type="text" name="modelo" id="modelo" placeholder="Informe o modelo" value = "<?php echo $modelo?>">
         <br><br>
-        <input type="text" name="cor" id="cor" placeholder="Informe a cor">
+        <input type="text" name="cor" id="cor" placeholder="Informe a cor" value = "<?php echo $cor?>">
         <br></br>
-        <input type="text" name="tipo" id="tipo" placeholder="Informe o tipo do veículo">
+        <input type="text" name="tipo" id="tipo" placeholder="Informe o tipo do veículo" value = "<?php echo $tipo?>">
         <br><br>
-        <select id="combustivel" name="combustivel" required>
+        <select id="combustivel" name="combustivel">
             <option value="">Selecione o combustível</option>
-            <option value="gasolina">Gasolina</option>
-            <option value="etanol">Álcool (Etanol)</option>
-            <option value="diesel">Diesel</option>
-            <option value="flex">Flex (Gasolina/Álcool)</option>
-            <option value="eletrico">Elétrico</option>
-            <option value="hibrido">Híbrido</option>
-            <option value="gnv">GNV (Gás Natural Veicular)</option>
+            <option value="gasolina" <?php echo($combustivel == "gasolina" ? "selected" : "")?> >Gasolina</option>
+            <option value="etanol" <?php echo($combustivel == "etanol" ? "selected" : "")?> >Álcool (Etanol)</option>
+            <option value="diesel" <?php echo($combustivel == "diesel" ? "selected" : "")?> >Diesel</option>
+            <option value="flex" <?php echo($combustivel == "flex" ? "selected" : "")?> >Flex (Gasolina/Álcool)</option>
+            <option value="eletrico" <?php echo($combustivel == "eletrico" ? "selected" : "")?> >Elétrico</option>
+            <option value="hibrido" <?php echo($combustivel == "hibrido" ? "selected" : "")?> >Híbrido</option>
+            <option value="gnv" <?php echo($combustivel == "gnv" ? "selected" : "")?> >GNV (Gás Natural Veicular)</option>
         </select>
         <br><br>
 
         <button type="submit">Cadastrar</button>
     </form>
 
+    <div id="divErro" style="color: red;">
+        <?php echo $msgErro; ?>    
+    </div>
 
     <h3>Carros cadastrado</h3>
 

@@ -1,25 +1,44 @@
-<?php 
-$id = $_GET["id"];
+<?php
 
-define('DIR_ARQUIVOS', "arquivos");
-$dados = array();
+include_once("persistencia.php");
 
-    //Rotina para ler o arquivo JSON
-    $caminhoArquivo = DIR_ARQUIVOS . "/livros.json";
-    if(file_exists($caminhoArquivo)){
-        $json = file_get_contents($caminhoArquivo);
-        $dados = json_decode($json, true);
-        $i = 0;
+//1- Capturar o ID recebido por GET
+$id = "";
+if(isset($_GET['id']))
+    $id = $_GET['id'];
 
-        foreach ($dados as $value) {
-            if($value["id"] == $id){
-                array_splice($dados, $i, 1);
-            }
-            $i++;
-        }
+//1.1- Validar se o ID foi enviado na requisição
+if(! $id) {
+    echo "ID do livro não informado!<br>";
+    echo "<a href='livros.php'>Voltar</a>";
+    exit;
+}
 
-        $json = json_encode($dados);
-        file_put_contents($caminhoArquivo, $json);
+//2- Carregar os livros do arquivo JSON como um array
+$livros = buscarDados("livros.json");
+//print_r($livros);
+
+//3- Encontrar o índice do livro no array (procurar pelo ID recebido)
+$idxLivroExcluir = -1;
+for($i=0; $i<count($livros); $i++) {
+    if($livros[$i]['id'] == $id) {
+        $idxLivroExcluir = $i;
+        break;
     }
-    header("location: livros.php");
-?>
+}
+
+//3.1- Validar se o ID corresponde a um dos livros salvo no JSON
+if($idxLivroExcluir < 0) {
+    echo "ID do livro não encontrado!<br>";
+    echo "<a href='livros.php'>Voltar</a>";
+    exit;
+}
+
+//4- Excluir o livro do array
+array_splice($livros, $idxLivroExcluir, 1);
+
+//5- Salvar o array como JSON
+salvarDados($livros, "livros.json");
+
+//6- Redirecionar para o formulário de livros
+header("location: livros.php");
