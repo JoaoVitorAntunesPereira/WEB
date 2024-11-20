@@ -20,7 +20,7 @@ if(file_exists($caminhoArquivo)){
         $i++;
     }
 
-    $json = json_encode($dados);
+    $json = json_encode($dados, JSON_PRETTY_PRINT);
     file_put_contents($caminhoArquivo, $json);
 
 }

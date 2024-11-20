@@ -1,18 +1,1 @@
-[
-    {
-        "id": "ace35f73-18fb-1dd0-c6ce-c3f0ef1db936",
-        "marca": "23",
-        "modelo": "12",
-        "cor": "fd",
-        "tipo": "asfd",
-        "combustivel": "diesel"
-    },
-    {
-        "id": "92c67a12-d27b-fed8-0365-0f9ad9675e49",
-        "marca": "gh",
-        "modelo": "qwe",
-        "cor": "e",
-        "tipo": "tr",
-        "combustivel": "gasolina"
-    }
-]
+[{"id":"020751f4-cfa8-58ab-3193-26ff44ddae69","marca":"Toyota","modelo":"2024 Turbo","cor":"Magenta","tipo":"Caminhonete convers\u00edvel","combustivel":"gasolina"},{"id":"c0ca5f45-05e8-85c2-82aa-5c9f94b6a9d8","marca":"Honda","modelo":"Civic","cor":"Negra","tipo":"Carro","combustivel":"eletrico"}]
