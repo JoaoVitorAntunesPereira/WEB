@@ -8,7 +8,7 @@ class JogoPlataformaDAO{
     public function list(){
         $conn = Connection::getConnection();
 
-        $sql = "SELECT * FROM jogo_Plataforma";
+        $sql = "SELECT * FROM jogo_plataforma";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
@@ -22,13 +22,21 @@ class JogoPlataformaDAO{
 
         foreach ($registros as $value) {
             $jogoPlataforma = new JogoPlataforma();
-            $jogoPlataforma->setId($value["id"]);
             $jogoPlataforma->setJogo($value["id_jogo"]);
             $jogoPlataforma->setPlataforma($value["id_plataforma"]);
 
             array_push($jogoPlataformas, $jogoPlataforma);
         }
 
-        return $jogoPlataforma;
+        return $jogoPlataformas;
     }
+
+    public function insert(JogoPlataforma $jogoPlataformaObj){
+        $conn = Connection::getConnection();
+
+        $sql = "INSERT INTO jogo_plataforma (id_jogo, id_plataforma) VALUES (?, ?)";
+        $stm = $conn->prepare($sql);
+        $stm->execute(array($jogoPlataformaObj->getJogo()->getId(), $jogoPlataformaObj->getPlataforma()->getId()));
+    }
+
 }

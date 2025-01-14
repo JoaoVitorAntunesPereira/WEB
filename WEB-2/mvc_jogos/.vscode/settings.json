@@ -1,3 +1,4 @@
 {
-    "editor.autoClosingComments": "always"
+    "editor.autoClosingComments": "always",
+    "editor.wordWrap": "on"
 }

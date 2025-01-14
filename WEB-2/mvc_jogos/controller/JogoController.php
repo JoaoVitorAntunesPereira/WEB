@@ -13,4 +13,13 @@ class JogoController{
         $jogos = $this->jogoDao->list();
         return $jogos;
     }
+
+    public function inserir(Jogo $jogoObj){
+        $this->jogoDao->insert($jogoObj);
+    }
+
+    public function buscarId(Jogo $jogoObj){
+        $id = $this->jogoDao->searchId($jogoObj);
+        return $id;
+    }
 }

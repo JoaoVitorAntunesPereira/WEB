@@ -1,12 +1,12 @@
 <?php
 
 include_once(__DIR__ . "/Jogo.php");
-include_once(__DIR__ . "/Plataforma.php");
+include_once(__DIR__ . "/Genero.php");
 
-class JogoPlataforma{
+class JogoGenero{
     private ?Jogo $jogo;
-    private ?Plataforma $plataforma;
-    
+    private ?Genero $genero;
+
     /**
      * Get the value of jogo
      */
@@ -26,19 +26,19 @@ class JogoPlataforma{
     }
 
     /**
-     * Get the value of plataforma
+     * Get the value of genero
      */
-    public function getPlataforma(): ?Plataforma
+    public function getGenero(): ?Genero
     {
-        return $this->plataforma;
+        return $this->genero;
     }
 
     /**
-     * Set the value of plataforma
+     * Set the value of genero
      */
-    public function setPlataforma(?Plataforma $plataforma): self
+    public function setGenero(?Genero $genero): self
     {
-        $this->plataforma = $plataforma;
+        $this->genero = $genero;
 
         return $this;
     }

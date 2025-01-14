@@ -8,22 +8,34 @@ CREATE TABLE genero (
     nome VARCHAR(35)
 );
 
+CREATE TABLE classificacao_indicativa (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    descricao VARCHAR(20)
+);
+
+
 CREATE TABLE jogo (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50),
+    titulo VARCHAR(50),
     data_lancamento DATE,
     desenvolvedor VARCHAR(50),
     distribuidora VARCHAR(50),
-    genero INT,
-    FOREIGN KEY (genero) REFERENCES genero(id)
+    id_classificacao INT,
+    FOREIGN KEY (id_classificacao) REFERENCES classificacao_indicativa(id)
 );
 
 CREATE TABLE jogo_plataforma (
-    id INT PRIMARY KEY AUTO_INCREMENT,
     id_jogo INT,
     id_plataforma INT,
     FOREIGN KEY (id_jogo) REFERENCES jogo(id),
     FOREIGN KEY (id_plataforma) REFERENCES plataforma(id)
+);
+
+CREATE TABLE jogo_genero (
+    id_jogo INT,
+    id_genero INT,
+    FOREIGN KEY (id_jogo) REFERENCES jogo(id),
+    FOREIGN KEY (id_genero) REFERENCES genero(id)
 );
 
 INSERT INTO plataforma (nome) VALUES
@@ -90,3 +102,11 @@ INSERT INTO genero (nome) VALUES
 ('Stealth'),
 ('Real-Time Strategy (RTS)'),
 ('Turn-Based Strategy (TBS)');
+
+INSERT INTO classificacao_indicativa (descricao) VALUES 
+('Livre'), 
+('10 anos'), 
+('12 anos'), 
+('16 anos'), 
+('18 anos');
+

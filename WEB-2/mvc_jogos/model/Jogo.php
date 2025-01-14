@@ -1,15 +1,14 @@
 <?php
 
-include_once(__DIR__ . "/Genero.php");
+include_once(__DIR__ . "/ClassificacaoIndicativa.php");
 
 class Jogo{
     private ?INT $id;
-    private ?string $nome;
+    private ?string $titulo;
     private ?string $dataLancamento;
     private ?string $desenvolvedor;
     private ?string $distribuidora;
-    private ?Genero $genero;
-
+    private ?ClassificacaoIndicativa $classInd;
     /**
      * Get the value of id
      */
@@ -29,19 +28,19 @@ class Jogo{
     }
 
     /**
-     * Get the value of nome
+     * Get the value of titulo
      */
-    public function getNome(): ?string
+    public function getTitulo(): ?string
     {
-        return $this->nome;
+        return $this->titulo;
     }
 
     /**
-     * Set the value of nome
+     * Set the value of titulo
      */
-    public function setNome(?string $nome): self
+    public function setTitulo(?string $titulo): self
     {
-        $this->nome = $nome;
+        $this->titulo = $titulo;
 
         return $this;
     }
@@ -101,19 +100,19 @@ class Jogo{
     }
 
     /**
-     * Get the value of genero
+     * Get the value of classInd
      */
-    public function getGenero(): ?Genero
+    public function getClassInd(): ?ClassificacaoIndicativa
     {
-        return $this->genero;
+        return $this->classInd;
     }
 
     /**
-     * Set the value of genero
+     * Set the value of classInd
      */
-    public function setGenero(?Genero $genero): self
+    public function setClassInd(?ClassificacaoIndicativa $classInd): self
     {
-        $this->genero = $genero;
+        $this->classInd = $classInd;
 
         return $this;
     }
