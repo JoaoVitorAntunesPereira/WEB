@@ -10,9 +10,17 @@ class JogoGeneroController {
     public function __construct() {
         $this->jogoGeneroDao = new JogoGeneroDAO();
     }
-    
+
+    public function listar($id) {
+        $generos = $this->jogoGeneroDao->list($id);
+        return $generos;
+    }
+
     public function inserir(JogoGenero $jogoGeneroObj) {
         $this->jogoGeneroDao->insert($jogoGeneroObj);
     }
 
+    public function excluir(int $id){
+        $this->jogoGeneroDao->delete($id);
+    }
 }

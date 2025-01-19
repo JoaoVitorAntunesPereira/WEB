@@ -11,12 +11,16 @@ class JogoPlataformaController {
         $this->jogoPlataformaDao = new JogoPlataformaDAO();
     }
 
-    public function listar() {
-        $plataformas = $this->jogoPlataformaDao->list();
+    public function listar($id) {
+        $plataformas = $this->jogoPlataformaDao->list($id);
         return $plataformas;
     }
+
     public function inserir(JogoPlataforma $jogoPlataformaObj) {
         $this->jogoPlataformaDao->insert($jogoPlataformaObj);
     }
 
+    public function excluir(int $id){
+        $this->jogoPlataformaDao->delete($id);
+    }
 }

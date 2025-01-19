@@ -5,9 +5,10 @@ include_once(__DIR__ . "/../../model/ClassificacaoIndicativa.php");
 include_once(__DIR__ . "/../../controller/JogoPlataformaController.php");
 include_once(__DIR__ . "/../../controller/JogoGeneroController.php");
 include_once(__DIR__ . "/../../controller/JogoController.php");
-include_once(__DIR__."/form.php");
 
-
+$erros = array();
+$jogoObj = null;
+$msgErro = "";
 
 if(isset($_POST["titulo"])){
     $plataformas = array();
@@ -45,8 +46,9 @@ if(isset($_POST["titulo"])){
         
         return null;
     }
-    $data_lancamento = converterDataParaBanco($data_lancamento);
-    
+    if($data_lancamento){
+        $data_lancamento = converterDataParaBanco($data_lancamento);
+    }
     $jogoObj = new Jogo();
     $jogoObj->setTitulo($titulo);
     $jogoObj->setDataLancamento($data_lancamento);
@@ -57,47 +59,61 @@ if(isset($_POST["titulo"])){
     $jogoObj->setClassInd($classIndObj);
 
     $jogoCont = new JogoController();
-    $jogoCont->inserir($jogoObj);
+    $erros = $jogoCont->inserir($jogoObj);
+
+    if(empty($erros)) {
+        header("location: listar.php");
+        exit;
+    } else{
+        $msgErro = implode("<br>", $erros);
+
+    }
 
     $id = $jogoCont->buscarId($jogoObj);
 
     $jogoPlataformaCont = new JogoPlataformaController();
-    foreach ($plataformas as $value) {
-        $jogoPlataformaObj = new JogoPlataforma();
-    
-        // Configurar o objeto Jogo
-        $jogoObj = new Jogo();
-        $jogoObj->setId($id);
-        $jogoPlataformaObj->setJogo($jogoObj);
-    
-        // Configurar o objeto Plataforma
-        $plataformaObj = new Plataforma();
-        $plataformaObj->setId($value);
-        $jogoPlataformaObj->setPlataforma($plataformaObj);
-    
-        // Inserir no banco
-        $jogoPlataformaCont->inserir($jogoPlataformaObj);
-    }
-    
+    $jogoGeneroCont = new JogoGeneroController();
 
-    foreach ($generos as $value) {
-        // Criar um novo objeto JogoGenero
-        $jogoGeneroObj = new JogoGenero();
+    if($id){
+        $plataformasCheckboxCounter = 0;
+        foreach ($plataformas as $value) {
+            if($plataformasCheckboxCounter < 5){
+                $jogoPlataformaObj = new JogoPlataforma();
+            
+                $jogoObj = new Jogo();
+                $jogoObj->setId($id);
+                $jogoPlataformaObj->setJogo($jogoObj);
+            
+                $plataformaObj = new Plataforma();
+                $plataformaObj->setId($value);
+                $jogoPlataformaObj->setPlataforma($plataformaObj);
+            
+                $jogoPlataformaCont->inserir($jogoPlataformaObj);
+    
+                $plataformasCheckboxCounter++;
+            }
+        }
         
-        // Configurar o objeto Jogo
-        $jogoObj = new Jogo();
-        $jogoObj->setId($id);
-        $jogoGeneroObj->setJogo($jogoObj);
-        
-        // Configurar o gênero
-        $generoObj = new Genero();
-        $generoObj->setId($value);
-        $jogoGeneroObj->setGenero($generoObj);
-        
-        // Inserir no banco
-        $jogoGeneroCont = new JogoGeneroController();
-        $jogoGeneroCont->inserir($jogoGeneroObj);
+        $generosCheckboxCounter = 0;
+        foreach ($generos as $value) {
+            if($generosCheckboxCounter < 5){
+                $jogoGeneroObj = new JogoGenero();
+                
+                $jogoObj = new Jogo();
+                $jogoObj->setId($id);
+                $jogoGeneroObj->setJogo($jogoObj);
+                
+                $generoObj = new Genero();
+                $generoObj->setId($value);
+                $jogoGeneroObj->setGenero($generoObj);
+                
+                $jogoGeneroCont->inserir($jogoGeneroObj);
+    
+                $generosCheckboxCounter++;
+            }
+        }
     }
-    
-    
 }
+
+
+include_once(__DIR__ . "/form.php");

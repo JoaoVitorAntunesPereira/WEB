@@ -16,6 +16,12 @@ $classIndArray = $classIndCont->listar();
 
 ?>
 
+<?php if($msgErro): ?>
+    <div id="msgErro" style="color: red;">
+        <?= $msgErro ?>
+    </div>
+<?php endif; ?>
+
 <h2>Formulário Jogo</h2>
 
 <form action="" method="post">
@@ -25,7 +31,7 @@ $classIndArray = $classIndCont->listar();
     </div>
     <div style="margin:10px;">
         <label for="data_lancamento">Data Lançamento</label>
-        <input type="datetime" name="data_lancamento" id="data_lancamento">
+        <input type="date" name="data_lancamento" id="data_lancamento">
     </div>
     <div style="margin:10px;">
         <label for="desenvolvedor">Desenvolvedor</label>
@@ -49,7 +55,7 @@ $classIndArray = $classIndCont->listar();
             <label for="generos[]">Gêneros</label><br>
             <?php foreach ($generos as $value): ?>
                 <label>
-                <input type="checkbox" name="generos[]" value="<?=$value->getId()?>">
+                <input type="checkbox" name="generos[]" class="checkbox-generos" value="<?=$value->getId()?>">
                 <?=$value->getNome()?>
                 </label><br>
             <?php endforeach; ?>
@@ -58,7 +64,7 @@ $classIndArray = $classIndCont->listar();
             <label for="plataformas[]">Plataformas</label><br>
             <?php foreach ($plataformas as $value): ?>
                 <label>
-                <input type="checkbox" name="plataformas[]" value="<?=$value->getId()?>">
+                <input type="checkbox" name="plataformas[]"class="checkbox-plataformas" value="<?=$value->getId()?>">
                 <?=$value->getNome()?>
                 </label><br>
             <?php endforeach; ?>
@@ -73,8 +79,7 @@ $classIndArray = $classIndCont->listar();
 
 
 
-
-
+<script src="../../service/checkboxes.js"></script>
 <?php require_once(__DIR__ . "/../include/header.php");
 
 ?>

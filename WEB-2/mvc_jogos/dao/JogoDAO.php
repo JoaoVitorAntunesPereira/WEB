@@ -9,10 +9,10 @@ class JogoDAO{
     public function list(){
         $conn = Connection::getConnection();
 
-        $sql = "SELECT * FROM jogo";
+        $sql = "SELECT j.*, c.descricao descricao_classificacao, c.id id_classificacao FROM jogo j JOIN classificacao_indicativa c ON(c.id = j.id_classificacao)";
         $stm = $conn->prepare($sql);
         $stm->execute();
-        $result = $stm->fetchAll;
+        $result = $stm->fetchAll();
 
         $jogos = $this->mapJogos($result);
         return $jogos;
@@ -23,13 +23,16 @@ class JogoDAO{
 
         foreach ($registros as $value) {
             $jogo = new Jogo();
+            $classInd = new ClassificacaoIndicativa();
 
             $jogo->setId($value["id"]);
             $jogo->setTitulo($value["titulo"]);
             $jogo->setDataLancamento($value["data_lancamento"]);
             $jogo->setDesenvolvedor($value["desenvolvedor"]);
-            $jogo->setDistribuidora($value["destribuidora"]);
-            $jogo->setClassInd($value["classificacao_indicativa"]);
+            $jogo->setDistribuidora($value["distribuidora"]);
+            $classInd->setId($value["id_classificacao"]);
+            $classInd->setDescricao($value["descricao_classificacao"]);
+            $jogo->setClassInd($classInd);
             array_push($jogos, $jogo);
         }
         return $jogos;
@@ -65,5 +68,27 @@ class JogoDAO{
 
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         return $result ? $result['id'] : null; 
+    }
+
+    public function delete(int $id){
+        $conn = Connection::getCOnnection();
+
+        $sql = "DELETE FROM jogo WHERE id = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute(array($id));
+    }
+
+    public function searchById(int $id){
+        $conn = Connection::getConnection();
+
+        $sql = "SELECT j.*, c.descricao descricao_classificacao, c.id id_classificacao FROM jogo j JOIN classificacao_indicativa c ON(c.id = j.id_classificacao) WHERE j.id = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute(array($id));
+
+        $result = $stm->fetchAll();
+
+        $jogo = $this->mapJogos($result);
+
+        return $jogo;
     }
 }
