@@ -91,4 +91,19 @@ class JogoDAO{
 
         return $jogo;
     }
+
+    public function edit(Jogo $jogoObj) {
+        $conn = Connection::getConnection();
+
+        $sql = "UPDATE jogo SET titulo = ?, data_lancamento = ?, desenvolvedor = ?, distribuidora = ?, id_classificacao = ? WHERE id = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([
+            $jogoObj->getTitulo(),
+            $jogoObj->getDataLancamento(),
+            $jogoObj->getDesenvolvedor(),
+            $jogoObj->getDistribuidora(),
+            $jogoObj->getClassInd()->getId(),
+            $jogoObj->getId()
+        ]);
+    }
 }

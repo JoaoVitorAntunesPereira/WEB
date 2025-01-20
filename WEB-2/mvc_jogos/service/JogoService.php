@@ -1,13 +1,10 @@
 <?php
 
 include_once(__DIR__ . "/../model/Jogo.php");
-include_once(__DIR__ . "/../model/JogoPlataforma.php");
-include_once(__DIR__ . "/../model/JogoGenero.php");
 
 class JogoService{
 
-    public function validar(Jogo $jogo) {
-        $erros = array();
+    public function validar(Jogo $jogo, array $erros){
 
         if(!$jogo->getTitulo()){
             array_push($erros, "Informe o título.");

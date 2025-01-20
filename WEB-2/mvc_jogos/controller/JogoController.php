@@ -17,8 +17,8 @@ class JogoController{
         return $jogos;
     }
 
-    public function inserir(Jogo $jogoObj){
-        $erros = $this->jogoService->validar($jogoObj);
+    public function inserir(Jogo $jogoObj, array $erros){
+        $erros = $this->jogoService->validar($jogoObj, $erros);
         if($erros){
             return $erros;
         }
@@ -39,5 +39,14 @@ class JogoController{
 
     public function excluir(int $id){
         $this->jogoDao->delete($id);
+    }
+
+    public function alterar(Jogo $jogoObj, array $erros){
+        $erros = $this->jogoService->validar($jogoObj, $erros);
+        if($erros){
+            return $erros;
+        }
+        $this->jogoDao->edit($jogoObj);
+        return array();
     }
 }

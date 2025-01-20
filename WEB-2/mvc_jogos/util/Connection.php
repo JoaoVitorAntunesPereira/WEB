@@ -1,8 +1,5 @@
 <?php
 
-use FTP\Connection as FTPConnection;
-use IMAP\Connection as IMAPConnection;
-
 require_once(__DIR__ . "/config.php");
 
 class Connection{

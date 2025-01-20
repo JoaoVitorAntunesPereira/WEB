@@ -18,7 +18,7 @@ $jogoGeneroCont = new JogoGeneroController();
 <h2>Listagem de Jogos</h2>
 
 <div>
-    <a href="inserir.php">Inserir novo jogo</a>
+    <a href="inserir.php"><h3>Inserir novo jogo</h3></a><br>
 </div>
 
 <table border="1">
@@ -59,7 +59,9 @@ $jogoGeneroCont = new JogoGeneroController();
                 ?>
             </td>
             <td><a href="excluir.php?id=<?= $jogo->getId()?>">Excluir</a></td>
+            <td><a href="editar.php?id=<?= $jogo->getId()?>">Editar</a></td>
         </tr>
     <?php endforeach;?>
 
 </table>
+<?php require_once(__DIR__ . "/../include/footer.php");
