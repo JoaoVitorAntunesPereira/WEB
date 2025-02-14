@@ -30,6 +30,8 @@ $app->get("/hello/{nome}", function(Request $request, Response $response, $args)
 //CLUBES
 $app->get("/jogos" , JogoController::class . ":listar");
 $app->post("/jogos", JogoController::class . ":inserir");
+$app->put("/jogos", JogoController::class . ":alterar");
+$app->delete("/jogos", JogoController::class . ":excluir");
 //Tratamento para rota não encontrada
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
     throw new HttpNotFoundException($request, "Esta rota não existe na API!");

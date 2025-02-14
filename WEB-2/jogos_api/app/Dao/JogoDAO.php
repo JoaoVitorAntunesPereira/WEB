@@ -44,6 +44,7 @@ class JogoDAO{
             $jogo->setDataLancamento($value["data_lancamento"]);
             $jogo->setDesenvolvedor($value["desenvolvedor"]);
             $jogo->setDistribuidora($value["distribuidora"]);
+            $jogo->setPaisLancamento($value["pais_lancamento"]);
             $classInd->setId($value["id_classificacao"]);
             $classInd->setDescricao($value["descricao"]);
             $jogo->setClassInd($classInd);

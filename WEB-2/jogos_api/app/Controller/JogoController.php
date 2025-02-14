@@ -55,16 +55,31 @@ class JogoController{
 						->withHeader("Content-Type" , "application/json");
     }
 
-    public function excluir(int $id){
-        $this->jogoDao->delete($id);
+    public function excluir(Request $request, Response $response, array $args): Response {
+        $json = $request->getParsedBody();
+		
+		$jogo = $this->jogoMapper->mapFromJsonToObject($json);
+        $this->jogoDao->delete($jogo->getId());
+        $json = json_encode($jogo, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+		$response->getBody()->write($json);
+		return $response
+						->withStatus(201)
+						->withHeader("Content-Type" , "application/json");
     }
 
-    public function alterar(Jogo $jogoObj, array $erros){
-        $erros = $this->jogoService->validar($jogoObj, $erros);
-        if($erros){
-            return $erros;
-        }
-        $this->jogoDao->edit($jogoObj);
-        return array();
+    public function alterar(Request $request, Response $response, array $args): Response {
+		$json = $request->getParsedBody();
+		
+		$jogo = $this->jogoMapper->mapFromJsonToObject($json);
+		
+        $this->jogoDao->edit($jogo);
+
+		$json = json_encode($jogo, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        
+		$response->getBody()->write($json);
+		return $response
+						->withStatus(201)
+						->withHeader("Content-Type" , "application/json");
     }
 }
