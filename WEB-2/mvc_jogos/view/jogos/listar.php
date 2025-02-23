@@ -12,27 +12,27 @@ $jogos = $jogoCont->listar();
 $jogoPlataformaCont = new JogoPlataformaController();
 
 $jogoGeneroCont = new JogoGeneroController();
+include_once(__DIR__ . "/../include/header.php");
 ?>
 
 
-<h2>Listagem de Jogos</h2>
+<h3>Listagem de Jogos</h3>
 
-<div>
-    <a href="inserir.php"><h3>Inserir novo jogo</h3></a><br>
-</div>
 
-<table border="1">
-    <tr>
-        <th>Título</th>
-        <th>Data Lançamento</th>
-        <th>Desenvolvedor</th>
-        <th>Distribuidora</th>
-        <th>Classificação Indicativa</th>
-        <th>Gêneros</th>
-        <th>Plataformas</th>
-        <th></th>
-        <th></th>
-    </tr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Data Lançamento</th>
+            <th>Desenvolvedor</th>
+            <th>Distribuidora</th>
+            <th>Classificação Indicativa</th>
+            <th>Gêneros</th>
+            <th>Plataformas</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
     <?php foreach ($jogos as $jogo):?>
         <tr>
             <td><?= $jogo->getTitulo()?></td>
@@ -64,4 +64,8 @@ $jogoGeneroCont = new JogoGeneroController();
     <?php endforeach;?>
 
 </table>
+
+<div>
+    <a href="inserir.php" class="btn btn-primary">Inserir novo jogo</a><br>
+</div>
 <?php require_once(__DIR__ . "/../include/footer.php");
