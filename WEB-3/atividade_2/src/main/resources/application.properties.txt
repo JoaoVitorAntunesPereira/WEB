@@ -1,0 +1,2 @@
+spring.application.name=atividade_2
+server.port=8080

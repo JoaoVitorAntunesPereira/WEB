@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 th:text="${store}"></h1>
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Nome</td>
+            <td>Preco</td>
+        </tr>
+
+        <tr th:each="product : ${products}">
+            <td th:text="${product.Id}">
+            <td th:text="${product.Name}">
+            <td th:text="${product.Price}">
+
+            </td>
+        </tr>
+
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bem vindo Thymeleaf</h1>
+
+    <p th:text="'th:text: ' + ${atributo}">???</p>
+    <p data-th-text="'data-th-text: ' + ${atributo}"></p>
+    <p>Couchetes duplo: [[${atributo}]]</p>
+
+    <h2>Task</h2>
+    <p th:text="'Id: ' + ${task.id}"></p>
+    <p th:text="'Name: ' + ${task.name}"></p>
+    <p th:text="'Data: ' + ${#temporals.format(task.dateTime, 'dd-MMMM-yyyy')}"></p>
+
+
+</body>
+</html>
