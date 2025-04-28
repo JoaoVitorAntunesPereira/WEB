@@ -18,7 +18,7 @@ class JogoGeneroDAO{
         $stm = $conn->prepare($sql);
         $stm->execute(array($id));
         $result = $stm->fetchAll();
-
+        
         $jogoGeneros = $this->mapJogoGeneros($result);
         return $jogoGeneros;
     }
@@ -29,15 +29,17 @@ class JogoGeneroDAO{
         foreach ($registros as $value) {
             $jogoGenero = new JogoGenero();
             $jogo = new Jogo();
-            $jogo->setId($value["id_jogo"]);
             $genero = new Genero();
+
+            $jogo->setId($value["id_jogo"]);
             $genero->setId($value["id_genero"]);
-            $genero->setNome(($value["nome"]));
+            $genero->setNome($value["nome"]);
             $jogoGenero->setJogo($jogo);
             $jogoGenero->setGenero($genero);
 
             array_push($jogoGeneros, $jogoGenero);
         }
+
 
         return $jogoGeneros;
     }

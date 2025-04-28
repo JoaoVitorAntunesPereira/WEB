@@ -2,6 +2,7 @@
 
 use App\Controller\ClubeController;
 use App\Controller\JogoController;
+use App\Controller\JogoGeneroController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;

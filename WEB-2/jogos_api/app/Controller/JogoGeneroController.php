@@ -22,8 +22,9 @@ class JogoGeneroController {
         $this->jogoGeneroDao = new JogoGeneroDAO();
     }
 
-    public function listar($id) {
+    public function listar($id){
         $generos = $this->jogoGeneroDao->list($id);
+
         return $generos;
     }
 

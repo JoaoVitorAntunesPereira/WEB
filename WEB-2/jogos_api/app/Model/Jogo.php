@@ -11,6 +11,10 @@ class Jogo implements JsonSerializable{
     private ?string $distribuidora;
     private ?ClassificacaoIndicativa $classInd;
     private ?string $pais_lancamento;
+    /** @var Genero[] */
+    private ?array $generos;
+    /** @var Plataforma[] */
+    private ?array $plataformas;
 
     public function jsonSerialize(): array{
         return array("id" => $this->id,
@@ -18,8 +22,10 @@ class Jogo implements JsonSerializable{
                      "dataLancamento" => $this->dataLancamento,
                      "desenvolvedor" => $this->desenvolvedor,
                      "distribuidora" => $this->distribuidora,
-                     "id_classificacao" => $this->classInd,
-                     "pais_lancamento" => $this->pais_lancamento);
+                     "classificacao" => $this->classInd,
+                     "pais_lancamento" => $this->pais_lancamento,
+                     "generos" => $this->generos,
+                     "plataformas" => $this->plataformas);
     }
 
     public function __construct(
@@ -29,17 +35,57 @@ class Jogo implements JsonSerializable{
         ?string $desenvolvedor = null,
         ?string $distribuidora = null,
         ?ClassificacaoIndicativa $classInd = null,
-        ?string $pais_lancamento = null
+        ?string $pais_lancamento = null,
+        ?array $generos = null,
+        ?array $plataformas = null
     ) {
         $this->id = $id;
         $this->titulo = $titulo;
         $this->dataLancamento = $dataLancamento;
         $this->desenvolvedor = $desenvolvedor;
         $this->distribuidora = $distribuidora;
-        $this->classInd = $classInd ?? new ClassificacaoIndicativa(); // Inicializa com novo objeto se for null
+        $this->classInd = $classInd ?? new ClassificacaoIndicativa();
         $this->pais_lancamento = $pais_lancamento;
+        $this->generos = $generos ?? [];
+        $this->plataformas = $plataformas ?? [];
     }
     
+    /**
+    *@return Genero[]
+    */
+    public function getGeneros(): array
+    {
+        return $this->generos;
+    }
+
+    /**
+  * @param Genero[] $generos
+  * @return self
+  */
+    public function setGeneros(array $generos): self
+    {
+        $this->generos = $generos;
+        return $this;
+    }
+
+        /**
+    *@return Plataforma[]
+    */
+    public function getPlataformas(): array
+    {
+        return $this->plataformas;
+    }
+
+    /**
+  * @param Plataforma[] $generos
+  * @return self
+  */
+    public function setPlataformas(array $plataformas): self
+    {
+        $this->plataformas = $plataformas;
+        return $this;
+    }
+
     /**
      * Get the value of id
      */

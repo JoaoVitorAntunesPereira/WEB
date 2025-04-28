@@ -3,9 +3,12 @@
 
 namespace App\Dao;
 
+use App\Controller\JogoGeneroController;
 use App\Util\Connection;
 use App\Mapper\JogoMapper;
 use App\Model\Jogo;
+use App\Model\Genero;
+use App\Dao\JogoGeneroDAO;
 use App\Model\ClassificacaoIndicativa;
 
 use \Exception;
@@ -38,6 +41,11 @@ class JogoDAO{
         foreach ($registros as $value) {
             $jogo = new Jogo();
             $classInd = new ClassificacaoIndicativa();
+            $jogoGeneroDao = new JogoGeneroDAO();
+            $generoArray = [];
+            $jogoPlataformaDao = new JogoPlataformaDAO();
+            $plataformaArray = [];
+
 
             $jogo->setId($value["id"]);
             $jogo->setTitulo($value["titulo"]);
@@ -46,8 +54,19 @@ class JogoDAO{
             $jogo->setDistribuidora($value["distribuidora"]);
             $jogo->setPaisLancamento($value["pais_lancamento"]);
             $classInd->setId($value["id_classificacao"]);
-            $classInd->setDescricao($value["descricao"]);
+            $classInd->setDescricao($value["descricao_classificacao"]);
             $jogo->setClassInd($classInd);
+        
+            foreach ($jogoGeneroDao->list($value["id"]) as $genero) {
+                array_push($generoArray, $genero->getGenero()->getNome());
+            }
+
+            foreach ($jogoPlataformaDao->list($value["id"]) as $plataforma) {
+                array_push($plataformaArray, $plataforma->getPlataforma()->getNome());
+            }
+
+            $jogo->setGeneros($generoArray);
+            $jogo->setPlataformas($plataformaArray);
             array_push($jogos, $jogo);
         }
         return $jogos;

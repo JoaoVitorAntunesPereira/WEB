@@ -4,7 +4,7 @@ namespace App\Model;
 
 use \JsonSerializable;
 
-class JogoGenero{
+class JogoGenero implements JsonSerializable{
     private ?Jogo $jogo;
     private ?Genero $genero;
 

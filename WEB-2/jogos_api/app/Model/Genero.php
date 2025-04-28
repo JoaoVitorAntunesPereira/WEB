@@ -2,7 +2,7 @@
 namespace App\Model;
 
 use \JsonSerializable;
-class Genero{
+class Genero implements JsonSerializable{
 
     private ?int $id;
     private ?string $nome; 

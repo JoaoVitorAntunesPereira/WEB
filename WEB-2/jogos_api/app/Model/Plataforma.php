@@ -4,7 +4,7 @@ namespace App\Model;
 
 use \JsonSerializable;
 
-class Plataforma{
+class Plataforma implements JsonSerializable{
     private ?INT $id;
     private ?string $nome;
     
