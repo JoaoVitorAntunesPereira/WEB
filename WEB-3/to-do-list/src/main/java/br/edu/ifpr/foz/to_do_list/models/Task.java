@@ -9,7 +9,6 @@ public class Task {
    private Long id;
    private String titulo;
    private String descricao;
-
    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
    private LocalDate data;
 
