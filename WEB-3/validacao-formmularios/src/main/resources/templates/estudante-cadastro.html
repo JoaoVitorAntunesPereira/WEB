@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <form th:action="@{/estudante}" method="post" th:object="${estudante}">
+
+        <div th:if="${#fields.hasErrors()}">
+            <ul>
+                <li th:each="error: ${#fields.errors()}">
+                    <span th:text="${error}"></span>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <input type="text" name="nome">
+        </div>
+
+        <div>
+            <input type="text" name="matricula">
+        </div>
+
+        <div>
+            <input type="date" name="dataNascimento"
+        </div>
+
+        <div>
+            <input type="submit" value="Cadastrar">
+        </div>
+    </form>
+
+</body>
+</html>
