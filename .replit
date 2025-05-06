@@ -1,5 +1,5 @@
 run = "php -S 0.0.0.0:8000 -t ."
-modules = ["php-8.2", "web", "nodejs-20"]
+modules = ["php-8.2", "web", "java-graalvm22.3", "nodejs-20"]
 
 [nix]
 channel = "stable-24_05"
