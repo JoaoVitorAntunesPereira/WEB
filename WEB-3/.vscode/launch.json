@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BibliotecaSpringApplication<br.edu.ifpr-biblioteca_spring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.edu.ifpr.biblioteca_spring.BibliotecaSpringApplication",
+            "projectName": "br.edu.ifpr-biblioteca_spring",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EstudanteErrorHandlerApplication<estudante-error-handler>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.edu.ifpr.estudante_error_handler.EstudanteErrorHandlerApplication",
+            "projectName": "estudante-error-handler",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
