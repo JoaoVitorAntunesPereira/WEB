@@ -110,21 +110,23 @@ public class EmprestimoServiceUnitTest {
 
         //Arrange
         Usuario usuario = usuarioService.buscarPorId(1L).get();
-        Livro livro = livroService.buscarPorId(3L).get();
+        Livro livro1 = livroService.buscarPorId(3L).get();
+        Livro livro2 = livroService.buscarPorId(4L).get();
 
-        Emprestimo emprestimo = emprestimoService.emprestarLivro(usuario, livro);
+        Emprestimo emprestimo1 = emprestimoService.emprestarLivro(usuario, livro1);
+        Emprestimo emprestimo2 = emprestimoService.emprestarLivro(usuario, livro2);
 
-        System.out.println(emprestimo.getDataPrevistaDevolucao());
-
-        emprestimo.setDataPrevistaDevolucao(LocalDate.of(2025, 05, 19));
+        emprestimo1.setDataPrevistaDevolucao(LocalDate.of(2025, 05, 20));
+        emprestimo2.setDataPrevistaDevolucao(LocalDate.of(2025, 05, 20));
 
         //Act
-        emprestimoService.devolverLivro(emprestimo.getId());
+        emprestimoService.devolverLivro(emprestimo1.getId());
+        emprestimoService.devolverLivro(emprestimo2.getId());
 
         //Assert
-
-        assertEquals(LocalDate.of(2025, 05, 26), usuario.getDataDeDesbloqueio());
-
+        assertEquals(LocalDate.of(2025, 06, 02), usuario.getDataDeDesbloqueio());
+        
     }
+
 
 }

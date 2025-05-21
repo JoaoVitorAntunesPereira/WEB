@@ -107,7 +107,11 @@ public class EmprestimoService {
             long diasAtraso = encontrado.getDataPrevistaDevolucao()
                     .until(encontrado.getDataDevolucaoReal()).getDays();
             long diasBloqueio = 5 + diasAtraso;
-            encontrado.getUsuario().bloquearAte(LocalDate.now().plusDays(diasBloqueio));
+            if(encontrado.getUsuario().isBloqueado()){
+                encontrado.getUsuario().bloquearAte(encontrado.getUsuario().getDataDeDesbloqueio().plusDays(diasBloqueio));
+            }else{
+                encontrado.getUsuario().bloquearAte(LocalDate.now().plusDays(diasBloqueio));
+            }
         }
 
         return Optional.empty();
