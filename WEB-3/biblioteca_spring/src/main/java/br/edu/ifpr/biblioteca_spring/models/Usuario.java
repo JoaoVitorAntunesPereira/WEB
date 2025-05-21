@@ -12,7 +12,7 @@ public class Usuario {
     private Long id;
 
     @NotNull(message = "O nome não pode ser vazio")
-    @Size(min = 1, message = "O nome de ter no mínimo 1 caracter")
+    @Size(min = 1, message = "O nome deve ter no mínimo 1 caracter")
     private String nome;
 
     @CPF(message = "CPF inválido")

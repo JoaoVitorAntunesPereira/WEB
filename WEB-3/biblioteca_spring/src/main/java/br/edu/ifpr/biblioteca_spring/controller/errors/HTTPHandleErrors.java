@@ -24,7 +24,7 @@ public class HTTPHandleErrors implements ErrorController{
                 model.addAttribute("descricao", "A página que você procurava não exite ou foi removida.");
             }
             else if(httpStatudCode == HttpStatus.INTERNAL_SERVER_ERROR.value()){
-                model.addAttribute("erro", "Um problema ocorreua");
+                model.addAttribute("erro", "Um problema ocorreu");
                 model.addAttribute("descricao", "tente novamente mais tarde");
             }
             else {

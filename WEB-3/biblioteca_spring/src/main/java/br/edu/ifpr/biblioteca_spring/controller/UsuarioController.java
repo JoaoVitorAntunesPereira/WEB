@@ -4,10 +4,12 @@ package br.edu.ifpr.biblioteca_spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import br.edu.ifpr.biblioteca_spring.models.Usuario;
 import br.edu.ifpr.biblioteca_spring.service.UsuariosService;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/usuarios")
@@ -29,7 +31,11 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public String salvar(@ModelAttribute Usuario usuario) {
+    public String salvar(@ModelAttribute @Valid Usuario usuario, BindingResult fields) {
+
+        if(fields.hasErrors()){
+            return "usuarios/form";
+        }
         usuarioService.adicionar(usuario);
         return "redirect:/usuarios";
     }

@@ -1,5 +1,11 @@
 package br.edu.ifpr.biblioteca_spring.controllers;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,7 +17,38 @@ import org.springframework.test.web.servlet.MockMvc;
 public class UsuarioIntegrationTest {
     
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockRequest;
 
+    @Test
+    public void deRetornarAViewDeListagemDoUsuario() throws Exception {
+
+        mockRequest.perform(get("/usuarios"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("usuarios/lista"));
+    }
+
+    @Test
+    public void deRetornarAViewDeCadastroDeUsuarios() throws Exception {
+
+        mockRequest.perform(get("/usuarios/novo"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("usuarios/form"));
+    }
+
+    @Test
+    public void deveRedirecionarParaListagemAposCadastrarUsuario() throws Exception {
+        mockRequest.perform(post("/usuarios")
+                .param("nome", "Carlos"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/usuarios"));
+    }
+
+    @Test
+    public void deveRedirecionarParaCadastroAposCadastroDeUsuarioDerErro() throws Exception {
+        mockRequest.perform(post("/usuarios")
+                .param("nome", ""))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/usuarios"));
+    }
     
 }
