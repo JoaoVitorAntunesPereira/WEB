@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UsuarioIntegrationTest {
     private MockMvc mockRequest;
 
     @Test
-    public void deRetornarAViewDeListagemDoUsuario() throws Exception {
+    public void deveRetornarAViewDeListagemDoUsuario() throws Exception {
 
         mockRequest.perform(get("/usuarios"))
         .andExpect(status().isOk())
@@ -28,7 +29,7 @@ public class UsuarioIntegrationTest {
     }
 
     @Test
-    public void deRetornarAViewDeCadastroDeUsuarios() throws Exception {
+    public void deveRetornarAViewDeCadastroDeUsuarios() throws Exception {
 
         mockRequest.perform(get("/usuarios/novo"))
         .andExpect(status().isOk())
@@ -36,7 +37,7 @@ public class UsuarioIntegrationTest {
     }
 
     @Test
-    public void deveRedirecionarParaListagemAposCadastrarUsuario() throws Exception {
+    public void deveRedirecionarParaListagemAposCadastrarUsuarioComSucess() throws Exception {
         mockRequest.perform(post("/usuarios")
                 .param("nome", "Carlos"))
             .andExpect(status().is3xxRedirection())
@@ -44,11 +45,11 @@ public class UsuarioIntegrationTest {
     }
 
     @Test
-    public void deveRedirecionarParaCadastroAposCadastroDeUsuarioDerErro() throws Exception {
+    public void deveRetornarAViewDeCadastroDeUsuariosPorErroNoCadastro() throws Exception {
         mockRequest.perform(post("/usuarios")
                 .param("nome", ""))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrl("/usuarios"));
+            .andExpect(status().isOk())
+            .andExpect(view().name("usuarios/form"));
     }
     
 }
