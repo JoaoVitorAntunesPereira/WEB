@@ -4,6 +4,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import org.junit.jupiter.api.Test;
@@ -33,4 +35,47 @@ public class EmprestimoIntegrationTest {
         .andExpect(status().isOk())
         .andExpect(view().name("emprestimos/form"));
     }
+
+    @Test
+    public void deveRetornarAViewDeListagemDeEmprestimosAposEmprestarComSucesso() throws Exception{
+        mockRequest.perform(post("/emprestimos")
+        .param("usuarioId", "2")
+        .param("livroId", "5"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(redirectedUrl("/emprestimos"));
+    }
+
+    @Test
+    public void deveRetornarAViewDeCriacaoDeEmprestimosAposErroNoEmprestimoPorUsuario() throws Exception{
+        mockRequest.perform(post("/emprestimos")
+        .param("usuarioId", "4")
+        .param("livroId", "5"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(redirectedUrl("/emprestimos/novo"));
+    }
+
+    @Test
+    public void deveRetornarAViewDeCriacaoDeEmprestimosAposErroNoEmprestimoPorLivro() throws Exception{
+        mockRequest.perform(post("/emprestimos")
+        .param("usuarioId", "2")
+        .param("livroId", "10"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(redirectedUrl("/emprestimos/novo"));
+    }
+    
+    @Test
+    public void deveDevolverLivroComSucesso() throws Exception{
+        mockRequest.perform(get("/emprestimos/devolucao?emprestimoId=2"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(redirectedUrl("/emprestimos"));
+    }
+
+    @Test
+    public void naoDeveDevolverLivroComSucesso() throws Exception{
+        mockRequest.perform(get("/emprestimos/devolucao?emprestimoId=7"))
+        .andExpect(status().is3xxRedirection())
+        .andExpect(redirectedUrl("/emprestimos"))
+        .andExpect(flash().attribute("erro", "Empréstimo não encontrado."));
+    }
+
 }

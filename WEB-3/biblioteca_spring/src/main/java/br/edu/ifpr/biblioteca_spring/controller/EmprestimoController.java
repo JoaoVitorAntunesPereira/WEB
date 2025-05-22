@@ -44,8 +44,20 @@ public class EmprestimoController {
     @PostMapping
     public String emprestar(@RequestParam Long usuarioId, @RequestParam Long livroId, Model model, RedirectAttributes redirectAttrs) {
         
-        Optional<Usuario> usuario = usuarioService.buscarPorId(usuarioId);
-        Optional<Livro> livro = livrosService.buscarPorId(livroId);
+        Optional<Usuario> usuario = java.util.Optional.empty();
+        Optional<Livro> livro = java.util.Optional.empty();
+
+        try {
+            usuario = usuarioService.buscarPorId(usuarioId);
+        } catch (Exception e) {
+            redirectAttrs.addFlashAttribute("erro", "Usuário ou Livro não encontrados.");
+        }
+
+        try {
+            livro = livrosService.buscarPorId(livroId);
+        } catch (Exception e) {
+            redirectAttrs.addFlashAttribute("erro", "Usuário ou Livro não encontrados.");
+        }
 
         if (usuario.isPresent() && livro.isPresent()) {
             
@@ -63,16 +75,16 @@ public class EmprestimoController {
             redirectAttrs.addFlashAttribute("erro", "Usuário ou Livro não encontrados.");
         }
 
-        return "redirect:emprestimos/novo";
+        return "redirect:/emprestimos/novo";
     }
 
     @GetMapping("/devolucao")
-    public String devolver(@RequestParam Long emprestimoId, Model model) {
+    public String devolver(@RequestParam Long emprestimoId, Model model, RedirectAttributes redirectAttrs) {
         Optional<String> resultado = emprestimoService.devolverLivro(emprestimoId);
         if (resultado.isEmpty()) {
             return "redirect:/emprestimos";
         } else {
-            model.addAttribute("erro", resultado.get());
+            redirectAttrs.addFlashAttribute("erro", resultado.get());
             return "redirect:/emprestimos";
         }
     }
