@@ -23,8 +23,7 @@ public class Task {
 
     public Task(){}
 
-    public Task(Long id, String titulo, String descricao, LocalDate date){
-        this.id = id;
+    public Task(String titulo, String descricao, LocalDate date){
         this.titulo = titulo;
         this.descricao = descricao;
         this.date = date;

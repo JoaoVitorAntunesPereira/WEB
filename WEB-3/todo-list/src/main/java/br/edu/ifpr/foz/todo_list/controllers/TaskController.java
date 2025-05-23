@@ -14,27 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifpr.foz.todo_list.models.Task;
+import br.edu.ifpr.foz.todo_list.services.TaskService;
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/tasks")
 public class TaskController {
-    private List<Task> tasks = new ArrayList<>();
 
+    TaskService taskService = new TaskService();
 
     public TaskController(){
-        Task t1 = new Task(1L, "Task1", "Desc T1", LocalDate.now());
-        Task t2 = new Task(2L, "Task2", "Desc T2", LocalDate.now());
-        Task t3 = new Task(3L, "Task3", "Desc T3", LocalDate.now());
+        Task t1 = new Task("Task1", "Desc T1", LocalDate.now());
+        Task t2 = new Task("Task2", "Desc T2", LocalDate.now());
+        Task t3 = new Task("Task3", "Desc T3", LocalDate.now());
 
-        tasks.add(t1);
-        tasks.add(t2);
-        tasks.add(t3);
+        taskService.criarTask(t1);
+        taskService.criarTask(t2);
+        taskService.criarTask(t3);
     }
 
     @GetMapping({"", "/", "/tasks"})
     public String listTask(Model model){
-        model.addAttribute("tasks", tasks);
+        model.addAttribute("tasks", taskService.listarTasks());
         
         return "task-list";
     }
@@ -53,6 +54,7 @@ public class TaskController {
             return "task-create";
         }
 
+        taskService.criarTask(task);
         
         redirectAttributes.addFlashAttribute("task", task);
 
