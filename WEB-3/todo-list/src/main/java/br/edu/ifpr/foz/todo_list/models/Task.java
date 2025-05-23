@@ -1,0 +1,67 @@
+package br.edu.ifpr.foz.todo_list.models;
+
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+public class Task {
+    private Long id;
+    @NotBlank(message = "O título é obrigatório")
+    @Size(min = 5, message = "O título deve ter pelo menos 5 caracteres")
+    private String titulo;
+
+    @NotBlank(message = "A descrição é obrigatória")
+    private String descricao;
+
+    @NotNull(message = "A data é obrigatória")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
+
+    public Task(){}
+
+    public Task(Long id, String titulo, String descricao, LocalDate date){
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    
+
+}
