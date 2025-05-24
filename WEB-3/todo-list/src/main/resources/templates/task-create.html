@@ -23,11 +23,17 @@
             <div class="mb-3">
                 <label for="date" class="form-label">Data</label>
                 <input type="date" class="form-control" name="date" id="date" th:field="*{date}">
+                <div th:if="${#fields.hasErrors('date')}" class="text-danger">
+                    <span th:errors="*{date}"></span>
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea class="form-control" name="descricao" id="descricao" rows="3" th:field="*{descricao}" placeholder="Digite a descrição"></textarea>
+                <div th:if="${#fields.hasErrors('descricao')}" class="text-danger">
+                    <span th:errors="*{descricao}"></span>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar</button>

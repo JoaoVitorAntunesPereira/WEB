@@ -22,7 +22,7 @@
                 <td th:text="${t.date}">Data</td>
                 <td>
                     <a th:href="@{/tasks/edit/{id}(id=${t.id})}">editar</a>
-                    <a href="@{/tasks/edit/{id}(id=${t.id})}">excluir</a>
+                    <a th:href="@{/tasks/delete/{id}(id=${t.id})}">excluir</a>
                 </td>
             </tr>
         </table>

@@ -2,6 +2,7 @@ package br.edu.ifpr.foz.todo_list.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import br.edu.ifpr.foz.todo_list.exceptions.TaskException;
 import br.edu.ifpr.foz.todo_list.models.Task;
@@ -39,6 +40,23 @@ public class TaskService {
 
     public List<Task> listarTasks(){
         return tasks;
+    }
+
+    public Optional<Task> buscarPorId(Long id) {
+        return tasks.stream()
+                    .filter(task -> task.getId().equals(id))
+                    .findFirst();
+    }
+
+    public boolean excluir(Optional<Task> taskOptional) {
+        try {
+            if (taskOptional.isPresent()) {
+                return tasks.remove(taskOptional.get());
+            }
+            return false;
+        } catch (Exception e) {
+            throw new TaskException("Erro ao excluir task");
+        }
     }
 
 
