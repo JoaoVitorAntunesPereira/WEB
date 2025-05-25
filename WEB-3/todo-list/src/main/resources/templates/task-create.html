@@ -10,7 +10,7 @@
     <div class="container pt-5">
         <h1>Cadastro de Tarefas</h1>
 
-        <form th:action="@{/tasks/create}" method="post" th:object="${task}" class="mt-4">
+        <form th:action="@{${task.id} != null ? '/tasks/edit/' + ${task.id} : '/tasks/create'}" method="post" th:object="${task}" class="mt-4">
             
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
@@ -36,7 +36,10 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" 
+                th:text="${task.id} != null ? 'Salvar alterações' : 'Criar tarefa'">
+            </button>
+
         </form>
     </div>
 </body>

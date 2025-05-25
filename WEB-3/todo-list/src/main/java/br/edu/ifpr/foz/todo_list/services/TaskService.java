@@ -60,4 +60,34 @@ public class TaskService {
     }
 
 
+    public int buscarIndex(Optional<Task> task){
+        int i = 0;
+        try {
+            if(task.isPresent()){
+                for (Task t : tasks) {
+                    if(t.equals(task.get())){
+                        break;
+                    }
+                    i++;
+                }
+            }
+            
+        } catch (Exception e) {
+            throw new TaskException("Erro ao buscar index de task");
+        }
+
+        return i;
+    }
+
+    public boolean editar(Task task){
+        
+        try {
+            tasks.set(buscarIndex(buscarPorId(task.getId())), task);
+            return true;
+        } catch (Exception e) {
+            throw new TaskException("Erro ao editar a task");
+        }
+    }
+
+
 }

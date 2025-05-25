@@ -2,8 +2,6 @@ package br.edu.ifpr.foz.todo_list.controllers;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
@@ -13,10 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.edu.ifpr.foz.todo_list.exceptions.TaskException;
 import br.edu.ifpr.foz.todo_list.models.Task;
 import br.edu.ifpr.foz.todo_list.services.TaskService;
 import jakarta.validation.Valid;
@@ -67,7 +63,7 @@ public class TaskController {
     }
 
     @GetMapping("/delete/{id}")
-    public String excluirTask(@PathVariable Long id, Model model) {
+    public String excluirTask(@PathVariable Long id) {
 
         Optional<Task> task = taskService.buscarPorId(id);
 
@@ -75,5 +71,34 @@ public class TaskController {
 
         return "redirect:/tasks";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editarTask(@PathVariable Long id, Model model) {
+        Optional<Task> optionalTask = taskService.buscarPorId(id);
+    
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            model.addAttribute("task", task);
+            return "task-create";
+        } else {
+            return "redirect:/tasks"; 
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String salvarEdicao(@PathVariable Long id, @Valid Task task, Model model, RedirectAttributes redirectAttributes, BindingResult fields) {
+    
+        if (fields.hasErrors()) {
+            model.addAttribute("task", task);
+            return "task-create";
+        }
+    
+        taskService.editar(task);
+    
+        redirectAttributes.addFlashAttribute("mensagem", "Tarefa atualizada com sucesso!");
+        return "redirect:/tasks";
+    }
+
+
 
 }
