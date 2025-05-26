@@ -19,7 +19,6 @@ public class Task {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
-    @NotNull(message = "Status")
     private Status status;
 
     public Task(){}
