@@ -99,4 +99,18 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
+    @GetMapping("/description/{id}")
+    public String exibirTask(@PathVariable Long id, Model model){
+        Optional<Task> optionalTask = taskService.buscarPorId(id);
+    
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            model.addAttribute("task", task);
+            return "task-description";
+        } else {
+            return "redirect:/tasks"; 
+        }
+
+    }
+
 }

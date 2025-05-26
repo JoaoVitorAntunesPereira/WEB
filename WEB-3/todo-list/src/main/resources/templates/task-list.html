@@ -18,7 +18,7 @@
             </tr>
         
             <tr th:each="t : ${tasks}">
-                <td th:text="${t.id}">Id</td>
+                <td><a th:href="@{/tasks/description/{id}(id=${t.id})}" th:text="${t.id}"></a></td>
                 <td th:text="${t.titulo}">Título</td>
                 <td th:text="${t.date}">Data</td>
                 <td th:text="${#strings.capitalize(t.status.name().toLowerCase().replace('_', ' '))}">Status</td>
