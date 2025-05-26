@@ -101,5 +101,13 @@ public class TaskService {
             }
     }
 
+    public Optional<List<Task>> listarTasksEmAndamento() {
+        List<Task> emAndamento = tasks.stream()
+            .filter(task -> task.getStatus().equals(Status.EM_ANDAMENTO))
+            .toList();
+    
+        return emAndamento.isEmpty() ? Optional.empty() : Optional.of(emAndamento);
+    }
+
 
 }

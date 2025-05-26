@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class Task {
+    
     private Long id;
     @NotBlank(message = "O título é obrigatório")
     private String titulo;
