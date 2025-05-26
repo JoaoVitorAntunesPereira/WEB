@@ -86,7 +86,7 @@ public class TaskController {
     }
 
     @PostMapping("/edit/{id}")
-    public String salvarEdicao(@PathVariable Long id, @Valid Task task, Model model, RedirectAttributes redirectAttributes, BindingResult fields) {
+    public String salvarEdicao(@PathVariable Long id, @Valid Task task, BindingResult fields, Model model, RedirectAttributes redirectAttributes) {
     
         if (fields.hasErrors()) {
             model.addAttribute("task", task);
@@ -98,7 +98,5 @@ public class TaskController {
         redirectAttributes.addFlashAttribute("mensagem", "Tarefa atualizada com sucesso!");
         return "redirect:/tasks";
     }
-
-
 
 }

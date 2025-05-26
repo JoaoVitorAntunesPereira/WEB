@@ -28,6 +28,16 @@
                 </div>
             </div>
 
+            <div th:if="${task.id} != null">
+                <div class="mb-3">
+                    <label for="status">Status</label>
+                    <div th:each="s : ${T(br.edu.ifpr.foz.todo_list.models.Status).values()}">
+                        <input class="form-check-input" type="radio" th:field="*{status}" th:value="${s}" th:id="${s}">
+                        <label class="form-check-label" th:for="${s}" th:text="${#strings.capitalize(s.name().toLowerCase().replace('_', ' '))}"></label>
+                    </div>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea class="form-control" name="descricao" id="descricao" rows="3" th:field="*{descricao}" placeholder="Digite a descrição"></textarea>

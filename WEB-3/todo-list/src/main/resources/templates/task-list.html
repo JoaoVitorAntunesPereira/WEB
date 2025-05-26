@@ -13,6 +13,7 @@
                 <td>Id</td>
                 <td>Título</td>
                 <td>Data</td>
+                <td>Status</td>
                 <td>Opções</td>
             </tr>
         
@@ -20,6 +21,7 @@
                 <td th:text="${t.id}">Id</td>
                 <td th:text="${t.titulo}">Título</td>
                 <td th:text="${t.date}">Data</td>
+                <td th:text="${#strings.capitalize(t.status.name().toLowerCase().replace('_', ' '))}">Status</td>
                 <td>
                     <a th:href="@{/tasks/edit/{id}(id=${t.id})}">editar</a>
                     <a th:href="@{/tasks/delete/{id}(id=${t.id})}">excluir</a>

@@ -19,6 +19,9 @@ public class Task {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
+    @NotNull(message = "Status")
+    private Status status;
+
     public Task(){}
 
     public Task(String titulo, String descricao, LocalDate date){
@@ -59,6 +62,12 @@ public class Task {
         this.date = date;
     }
 
-    
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
 }

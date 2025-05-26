@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.ifpr.foz.todo_list.exceptions.TaskException;
+import br.edu.ifpr.foz.todo_list.models.Status;
 import br.edu.ifpr.foz.todo_list.models.Task;
 
 public class TaskService {
@@ -21,6 +22,7 @@ public class TaskService {
         }
 
         try {
+            task.setStatus(Status.EM_ANDAMENTO);
             tasks.add(task);
         } catch (Exception e) {
             throw new TaskException("Erro ao adicionar nova task");
@@ -87,6 +89,16 @@ public class TaskService {
         } catch (Exception e) {
             throw new TaskException("Erro ao editar a task");
         }
+    }
+
+    public Status mapearStatus(String statusText){
+            if(statusText.toUpperCase().replace(' ', '_').equals(Status.EM_ANDAMENTO.name())){
+                return Status.EM_ANDAMENTO;
+            }else if(statusText.toUpperCase().replace(' ', '_').equals(Status.CONCLUIDA.name())){
+                return Status.CONCLUIDA;
+            }else{
+                return Status.CANCELADA;
+            }
     }
 
 
