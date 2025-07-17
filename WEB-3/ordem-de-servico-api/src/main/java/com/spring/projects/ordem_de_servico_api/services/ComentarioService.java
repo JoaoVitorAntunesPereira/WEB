@@ -14,8 +14,14 @@ public class ComentarioService {
     @Autowired
     ComentarioRepository comentarioRepository;
 
+    @Autowired
+    OrdemServicoService ordemServicoService;
+
+
     public List<Comentario> findAll() {
         return comentarioRepository.findAll();
     }
+
+
     
 }

@@ -19,5 +19,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(400).body(exception.getMessage());
     }
 
+    @ExceptionHandler(OrdemServicoNotFoundException.class)
+    public ResponseEntity<String> handleOrdemServicoNotFound(OrdemServicoNotFoundException exception){
+        return ResponseEntity.status(404).body(exception.getMessage());
+    }
 
 }

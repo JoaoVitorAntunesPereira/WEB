@@ -1,6 +1,7 @@
 package com.spring.projects.ordem_de_servico_api.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,13 @@ public class ClienteService {
         }
 
         return clienteRepository.save(cliente);
+    }
+
+    public Optional<Cliente> findById(Long id) {
+
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+
+        return cliente;
     }
     
 }

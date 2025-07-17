@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.projects.ordem_de_servico_api.models.Comentario;
 import com.spring.projects.ordem_de_servico_api.services.ComentarioService;
 
+
 @RestController
 @RequestMapping("/comentarios")
 public class ComentarioController {
@@ -23,11 +24,7 @@ public class ComentarioController {
 
         List<Comentario> comentarios = comentarioService.findAll();
 
-        if(comentarios.size() == 0){
-            return ResponseEntity.status(204).body(comentarios);
-        }
-
         return ResponseEntity.ok(comentarios);
     }
-    
+
 }
